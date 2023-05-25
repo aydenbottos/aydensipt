@@ -516,19 +516,6 @@
       "cssFilePath": "plasmic/blank_project/plasmic_blank_project.module.css",
       "components": [
         {
-          "id": "sl5p3sYKkHMv",
-          "name": "Homepage",
-          "type": "managed",
-          "projectId": "4msTxzQkVxmeBxU6hC5iDX",
-          "renderModuleFilePath": "plasmic/blank_project/PlasmicHomepage.tsx",
-          "importSpec": {
-            "modulePath": "../pages/index.tsx"
-          },
-          "cssFilePath": "plasmic/blank_project/PlasmicHomepage.module.css",
-          "scheme": "blackbox",
-          "componentType": "page"
-        },
-        {
           "id": "I-446ENuriy",
           "name": "Button",
           "type": "managed",
@@ -555,6 +542,19 @@
           "scheme": "blackbox",
           "componentType": "component",
           "plumeType": "text-input"
+        },
+        {
+          "id": "sl5p3sYKkHMv",
+          "name": "Homepage",
+          "type": "managed",
+          "projectId": "4msTxzQkVxmeBxU6hC5iDX",
+          "renderModuleFilePath": "plasmic/blank_project/PlasmicHomepage.tsx",
+          "importSpec": {
+            "modulePath": "../pages/index.tsx"
+          },
+          "cssFilePath": "plasmic/blank_project/PlasmicHomepage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
         }
       ],
       "icons": [
