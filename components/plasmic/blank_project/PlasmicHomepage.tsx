@@ -177,7 +177,7 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "currentTab",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 8 as const
+        initFunc: ({ $props, $state, $queries, $ctx }) => 1 as const
       },
       {
         path: "textInput3.value",
@@ -417,7 +417,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   }
                   <React.Fragment>
                     {
-                      "\nThe ethical hacker today... is you! Find out how to hack a Linux system, while racing against the clock to beat your friends. Please note, for an incorrect answer, there will be no message and the button simply won't work."
+                      "\nThe ethical hacker today... is you! Learn how to hack a Linux system, while racing against the clock to beat your friends. Please note, for an incorrect answer, there will be no message and the button simply won't work."
                     }
                   </React.Fragment>
                 </React.Fragment>
