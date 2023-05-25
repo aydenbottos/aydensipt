@@ -560,7 +560,7 @@ function PlasmicHomepage__RenderFunc(props: {
             src={
               hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? ("http://170.64.252.6:8000/" as const)
-                : ("https://www.example.com" as const)
+                : ("http://170.64.252.6:8000/" as const)
             }
           />
 
