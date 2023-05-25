@@ -248,6 +248,20 @@ function PlasmicHomepage__RenderFunc(props: {
     setDollarQueries
   });
 
+  useDependencyAwareQuery({
+    name: "query2",
+    getDataOp: () => ({
+      sourceId: "hPL778ruEdmyrfSSXLAc7T",
+      opId: "2e8f740e-090d-49df-870b-e58737797032",
+      userArgs: {},
+      cacheKey: "plasmic.$.SdhLzypIC.$.",
+      invalidatedKeys: null,
+      roleId: null
+    }),
+    $queries,
+    setDollarQueries
+  });
+
   return (
     <React.Fragment>
       <Head></Head>
@@ -727,7 +741,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   }),
                   data: (() => {
                     try {
-                      return $queries.query;
+                      return $queries.query2;
                     } catch (e) {
                       if (e instanceof TypeError) {
                         return undefined;
@@ -2296,7 +2310,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       <React.Fragment>
                         <React.Fragment>
                           {
-                            "Inside this directory are two C files and a Bash script. We won't need the Bash script, so feel free to ignore it. The two C files are exploit-1.c and exploit-2.c. Exploit 1 relies on modifying the /etc/passwd file to change the root user's password, whereas exploit 2 relies on a special type of file called a SUID binary. We will use exploit 1 due to it being easier to use. To use the exploit, we must first compile it using a program called GCC. This program is called a compiler, and will turn our C code into a working program. Let's use the compiler, and then, find out what the output file is called.\n\n"
+                            "Inside this directory are two C files and a Bash script. We won't need the Bash script, so feel free to ignore it. The two C files are exploit-1.c and exploit-2.c. Exploit 1 relies on modifying the /etc/passwd file to change the root user's password, whereas exploit 2 relies on a special type of file called a SUID binary. We will use exploit 2 due to it being easier to use. To use the exploit, we must first compile it using a program called GCC. This program is called a compiler, and will turn our C code into a working program. Let's use the compiler, and then, find out what the output file is called.\n\n"
                           }
                         </React.Fragment>
                         {
@@ -2308,7 +2322,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               sty.pre__gmvqL
                             )}
                           >
-                            {"gcc exploit-1.c -o $(whoami)"}
+                            {"gcc exploit-2.c -o $(whoami)"}
                           </pre>
                         }
                         <React.Fragment>{""}</React.Fragment>
@@ -2591,7 +2605,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               sty.pre__xqEaU
                             )}
                           >
-                            {"./foo"}
+                            {"./foo /usr/bin/su"}
                           </pre>
                         }
                         <React.Fragment>{""}</React.Fragment>
@@ -2952,8 +2966,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                         argName: "dataOp"
                                       },
                                       () => ({
-                                        sourceId: "q7oWrZbR7D2uoYCCVJdTaT",
-                                        opId: "280fc360-687f-4fe9-9756-9998be7ef864",
+                                        sourceId: "hPL778ruEdmyrfSSXLAc7T",
+                                        opId: "8d1ad438-8ecb-409f-b13e-b923d4779420",
                                         userArgs: {
                                           variables: [
                                             (() => {
