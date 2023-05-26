@@ -198,8 +198,7 @@
           "name": "TableValue",
           "componentImportPath": "@plasmicpkgs/antd/skinny/registerTable"
         }
-      ],
-      "jsBundleThemes": []
+      ]
     },
     {
       "projectId": "gLnoj82AzKVVT7qXiqAbHD",
@@ -259,8 +258,7 @@
           "name": "TabContent",
           "componentImportPath": "@plasmicpkgs/plasmic-tabs"
         }
-      ],
-      "jsBundleThemes": []
+      ]
     },
     {
       "projectId": "jkU633o1Cz7HrJdwdxhVHk",
@@ -293,8 +291,7 @@
           "name": "RichDetails",
           "componentImportPath": "@plasmicpkgs/plasmic-rich-components"
         }
-      ],
-      "jsBundleThemes": []
+      ]
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -470,8 +467,7 @@
           "name": "AntdSwitch",
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerSwitch"
         }
-      ],
-      "jsBundleThemes": []
+      ]
     },
     {
       "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
@@ -505,8 +501,7 @@
           "name": "DataProvider",
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
-      ],
-      "jsBundleThemes": []
+      ]
     },
     {
       "projectId": "4msTxzQkVxmeBxU6hC5iDX",

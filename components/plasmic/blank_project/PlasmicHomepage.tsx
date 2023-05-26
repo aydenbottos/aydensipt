@@ -23,7 +23,7 @@ import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 import {
   usePlasmicDataConfig,
   executePlasmicDataOp,
-  useDependencyAwareQuery
+  usePlasmicDataOp
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import {
@@ -53,7 +53,6 @@ import { Fetcher } from "@plasmicapp/react-web/lib/data-sources"; // plasmic-imp
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic_antd_5_hostless.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic_plasmic_rich_components.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic_blank_project.module.css"; // plasmic-import: 4msTxzQkVxmeBxU6hC5iDX/projectcss
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: sl5p3sYKkHMv/css
 
@@ -91,6 +90,7 @@ export type PlasmicHomepage__OverridesType = {
   textInput6?: p.Flex<typeof TextInput>;
   textInput7?: p.Flex<typeof TextInput>;
   textInput8?: p.Flex<typeof TextInput>;
+  textInput10?: p.Flex<typeof TextInput>;
   textInput9?: p.Flex<typeof TextInput>;
 };
 
@@ -140,7 +140,9 @@ function PlasmicHomepage__RenderFunc(props: {
   const $refs = refsRef.current;
 
   const currentUser = p.useCurrentUser?.() || {};
+
   const [$queries, setDollarQueries] = React.useState({});
+
   const stateSpecs = React.useMemo(
     () => [
       {
@@ -226,6 +228,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "" as const
+      },
+      {
+        path: "textInput10.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       }
     ],
     [$props, $ctx]
@@ -234,33 +242,44 @@ function PlasmicHomepage__RenderFunc(props: {
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const { cache, mutate: swrMutate } = usePlasmicDataConfig();
   const mutate = swrMutate;
-  useDependencyAwareQuery({
-    name: "query",
-    getDataOp: () => ({
-      sourceId: "q7oWrZbR7D2uoYCCVJdTaT",
-      opId: "ac44e80f-0531-4b46-a3c7-afc33ea7254f",
-      userArgs: {},
-      cacheKey: "plasmic.$._lBzu9OLy.$.",
-      invalidatedKeys: null,
-      roleId: null
-    }),
-    $queries,
-    setDollarQueries
-  });
 
-  useDependencyAwareQuery({
-    name: "query2",
-    getDataOp: () => ({
-      sourceId: "hPL778ruEdmyrfSSXLAc7T",
-      opId: "2e8f740e-090d-49df-870b-e58737797032",
-      userArgs: {},
-      cacheKey: "plasmic.$.SdhLzypIC.$.",
-      invalidatedKeys: null,
-      roleId: null
-    }),
-    $queries,
-    setDollarQueries
-  });
+  const new$Queries = {
+    query: usePlasmicDataOp(
+      (() => {
+        try {
+          return {
+            sourceId: "q7oWrZbR7D2uoYCCVJdTaT",
+            opId: "ac44e80f-0531-4b46-a3c7-afc33ea7254f",
+            userArgs: {},
+            cacheKey: "plasmic.$._lBzu9OLy.$.",
+            invalidatedKeys: null,
+            roleId: null
+          };
+        } catch {
+          return undefined;
+        }
+      })()
+    ),
+    query2: usePlasmicDataOp(
+      (() => {
+        try {
+          return {
+            sourceId: "hPL778ruEdmyrfSSXLAc7T",
+            opId: "2e8f740e-090d-49df-870b-e58737797032",
+            userArgs: {},
+            cacheKey: "plasmic.$.SdhLzypIC.$.",
+            invalidatedKeys: null,
+            roleId: null
+          };
+        } catch {
+          return undefined;
+        }
+      })()
+    )
+  };
+  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
+    setDollarQueries(new$Queries);
+  }
 
   return (
     <React.Fragment>
@@ -285,7 +304,6 @@ function PlasmicHomepage__RenderFunc(props: {
             projectcss.plasmic_mixins,
             projectcss.plasmic_tokens,
             plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens,
             sty.root,
             {
               [sty.rootunnamedVariant]: hasVariant(
@@ -560,7 +578,7 @@ function PlasmicHomepage__RenderFunc(props: {
             src={
               hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? ("https://8a58-170-64-158-32.ngrok-free.app" as const)
-                : ("https://8a58-170-64-158-32.ngrok-free.app" as const)
+                : ("https://www.example.com" as const)
             }
           />
 
@@ -759,16 +777,10 @@ function PlasmicHomepage__RenderFunc(props: {
                   })(),
                   fields: (() => {
                     const __composite = [
-                      {
-                        key: "__airtable_id",
-                        fieldId: "__airtable_id",
-                        isHidden: null
-                      },
                       { key: "Name", fieldId: "Name" },
-                      { key: "Duration", fieldId: "Duration", title: null }
+                      { key: "Time", fieldId: "Time", title: null }
                     ];
-                    __composite["0"]["isHidden"] = true;
-                    __composite["2"]["title"] = "Completion Time";
+                    __composite["1"]["title"] = "Completion Time";
                     return __composite;
                   })(),
 
@@ -803,8 +815,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
                     projectcss.plasmic_tokens,
-                    plasmic_antd_5_hostless_css.plasmic_tokens,
-                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                    plasmic_antd_5_hostless_css.plasmic_tokens
                   )
                 };
                 p.initializeCodeComponentStates(
@@ -837,6 +848,44 @@ function PlasmicHomepage__RenderFunc(props: {
                 );
               })()
             : null}
+          {(
+            hasVariant($state, "unnamedVariant", "unnamedVariant") ? true : true
+          ) ? (
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__f67Rt,
+                {
+                  [sty.textunnamedVariant__f67RTzhk3W]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  )
+                }
+              )}
+            >
+              {(() => {
+                try {
+                  return new Date(
+                    Number(new Date()) -
+                      Number(
+                        new Date(
+                          new Date().toDateString() + " " + $state.startTime
+                        )
+                      )
+                  )
+                    .toUTCString()
+                    .slice(17, 25);
+                } catch (e) {
+                  if (e instanceof TypeError) {
+                    return "";
+                  }
+                  throw e;
+                }
+              })()}
+            </div>
+          ) : null}
           {(
             hasVariant($state, "unnamedVariant", "unnamedVariant")
               ? true
@@ -969,7 +1018,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       )}
                     >
                       {
-                        "Congrats! You have just been hired by Palo Alto Security as their newest Security Engineer. Your first assignment today is to try and compromise a Linux system using an unprivileged user.\n\nThe connection details for the machine are below. Let's see if you can connect!\n\nUsername: foo\nPassword: bar\nIP address: 170.64.252.6 on port 2222\n\nOnce you connect, find out the user's UID using the id command."
+                        "Congrats! You have just been hired by Palo Alto Security as their newest Security Engineer. Your first assignment today is to try and compromise a Linux system using an unprivileged user.\n\nThe connection details for the machine are below. Let's see if you can connect!\n\nUsername: foo\nPassword: bar\nIP address: 170.64.252.6 on port 2222\n\nOnce you connect, feel free to familiarise yourself with the terminal. Then, find out the user's UID using the id command. The UID is each Linux user's unique ID number that identifies them on the system."
                       }
                     </div>
                   ) : null}
@@ -1235,7 +1284,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       )}
                     >
                       {
-                        'This is your Linux terminal. You are free to run any command you wish, provided that you have the correct privileges to do so. Currently, you are the "foo" user, which is an unprivileged user without superuser permissions. This means that you are not able to edit any system files or run any system scripts.\n\nThe intended design for this program was to keep all users inside this environment. As a security researcher, it is your job to find out if it is possible to exploit it.\n\nUsing the pwd command, find out what directory you are in.'
+                        'This is your Linux terminal. You are free to run any command you wish, provided that you have the correct privileges to do so. Currently, you are the "foo" user, which is an unprivileged user without superuser permissions. This means that you are not able to edit any system files or run any system scripts. Some important commands on a Linux terminal include ls which lists the files in a directory, pwd which tells you which directory you are in, and vim which helps to edit files. \n\nThe intended design for this program was to keep all users inside this environment. The client is a large corporation, and wants to ensure that no user is able to access sensitive information. As a security researcher, it is your job to find out if it is possible to exploit it.\n\nUsing the pwd command, find out what directory you are in.'
                       }
                     </div>
                   ) : null}
@@ -1501,7 +1550,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       )}
                     >
                       {
-                        "Now, let's take a look at the machine itself. This machine runs Linux, which is an operating system geared towards developers and organisations. Linux is the most secure OS, but it doesn't mean that it has no vulnerabilities. \n\nUsually, these vulnerabilities stem from mis-configured systems - but in this case, the system is empty, so we need to look towards another attack vector.\n\nUsing the uname -a command, what is the current kernel version?"
+                        "Now, let's take a look at the machine itself. This machine runs Linux, which is an operating system geared towards developers and organisations. Linux is the most secure OS, but it doesn't mean that it has no vulnerabilities. \n\nUsually, these vulnerabilities stem from mis-configured systems - but in this case, the system is empty, so we need to look towards another attack vector. One of these is the kernel, which controls everything from boot to shutdown.\n\nUsing the uname -a command, what is the current kernel version?"
                       }
                     </div>
                   ) : null}
@@ -1767,7 +1816,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       )}
                     >
                       {
-                        "As you may have found, this system is running Ubuntu 21.10, on Linux 5.13.0-19. Usually, kernel exploits affect older kernel versions, but it's always worth taking a look to see if there are any vulnerabilities, even on newer versions like this. These vulnerabilities exploit bugs in the kernel, allowing an unprivileged user to gain root by modifying system binaries, editing permissions, or abusing stacks. \n\nThis technique is called Local Privilege Escalation, or LPE for short, and is one of the easiest ways to gain root privileges on a Linux system, provided it is vulnerable.\n\nSearch the web for an exploit affecting this kernel, and find out its CVE ID."
+                        "As you may have found, this system is running Ubuntu 21.10, on Linux 5.13.0-19. Usually, kernel exploits affect older kernel versions, but it's always worth taking a look to see if there are any vulnerabilities, even on newer versions like this. These vulnerabilities exploit bugs in the kernel, allowing an unprivileged user to gain root by modifying system binaries, editing permissions, or abusing stacks. \n\nThis technique is called Local Privilege Escalation, or LPE for short, and is one of the easiest ways to gain root privileges on a Linux system, provided it is vulnerable.\n\nSearch the web for any exploits affecting this kernel, and find a CVE ID."
                       }
                     </div>
                   ) : null}
@@ -2776,6 +2825,272 @@ function PlasmicHomepage__RenderFunc(props: {
                   : true
               ) ? (
                 <div
+                  className={classNames(projectcss.all, sty.freeBox__k4G0B, {
+                    [sty.freeBoxunnamedVariant__k4G0Bzhk3W]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
+                >
+                  {(
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
+                      ? true
+                      : true
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__zrarZ,
+                        {
+                          [sty.textunnamedVariant__zrarZzhk3W]: hasVariant(
+                            $state,
+                            "unnamedVariant",
+                            "unnamedVariant"
+                          )
+                        }
+                      )}
+                    >
+                      <React.Fragment>
+                        <React.Fragment>{""}</React.Fragment>
+                        {
+                          <h3
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.h3,
+                              projectcss.__wab_text,
+                              sty.h3__nzzpm
+                            )}
+                          >
+                            <React.Fragment>
+                              <React.Fragment>{""}</React.Fragment>
+                              {
+                                <h2
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.h2,
+                                    projectcss.__wab_text,
+                                    sty.h2__omtim
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    <React.Fragment>{""}</React.Fragment>
+                                    {
+                                      <h3
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.h3,
+                                          projectcss.__wab_text,
+                                          sty.h3__xirNp,
+                                          {
+                                            [sty.h3unnamedVariant__xirNPzhk3W]:
+                                              hasVariant(
+                                                $state,
+                                                "unnamedVariant",
+                                                "unnamedVariant"
+                                              )
+                                          }
+                                        )}
+                                      >
+                                        {"Patching"}
+                                      </h3>
+                                    }
+                                    <React.Fragment>{""}</React.Fragment>
+                                  </React.Fragment>
+                                </h2>
+                              }
+                              <React.Fragment>{""}</React.Fragment>
+                            </React.Fragment>
+                          </h3>
+                        }
+                        <React.Fragment>{""}</React.Fragment>
+                      </React.Fragment>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
+                      ? true
+                      : true
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___38AxD,
+                        {
+                          [sty.textunnamedVariant___38AxDzhk3W]: hasVariant(
+                            $state,
+                            "unnamedVariant",
+                            "unnamedVariant"
+                          )
+                        }
+                      )}
+                    >
+                      {
+                        "As we found, we have now entered a root shell. This means that we have unlimited privileges on the system, and can directly edit restricted files and run special programs. One of these programs is called APT. This is the package manager on Ubuntu, and helps us install, uninstall, and upgrade packages. As the current system is vulnerable, we need to update it to apply important security patches that fix the vulnerability. Find out what APT subcommand allows a user to update the system, and run it once you submit."
+                      }
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
+                      ? true
+                      : true
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__pQdsL,
+                        {
+                          [sty.freeBoxunnamedVariant__pQdsLzhk3W]: hasVariant(
+                            $state,
+                            "unnamedVariant",
+                            "unnamedVariant"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "unnamedVariant", "unnamedVariant")
+                          ? true
+                          : true
+                      ) ? (
+                        <TextInput
+                          data-plasmic-name={"textInput10"}
+                          data-plasmic-override={overrides.textInput10}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.textInput10,
+                            {
+                              [sty.textInput10unnamedVariant]: hasVariant(
+                                $state,
+                                "unnamedVariant",
+                                "unnamedVariant"
+                              )
+                            }
+                          )}
+                          endIcon={
+                            <svg
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__aagik
+                              )}
+                              role={"img"}
+                            />
+                          }
+                          onChange={(...eventArgs) => {
+                            p.generateStateOnChangeProp($state, [
+                              "textInput10",
+                              "value"
+                            ])((e => e.target?.value).apply(null, eventArgs));
+                          }}
+                          placeholder={"Subcommand" as const}
+                          value={
+                            p.generateStateValueProp($state, [
+                              "textInput10",
+                              "value"
+                            ]) ?? ""
+                          }
+                        />
+                      ) : null}
+                      {(
+                        hasVariant($state, "unnamedVariant", "unnamedVariant")
+                          ? true
+                          : true
+                      ) ? (
+                        <Button2
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__pQaZu,
+                            {
+                              [sty.buttonunnamedVariant__pQaZuzhk3W]:
+                                hasVariant(
+                                  $state,
+                                  "unnamedVariant",
+                                  "unnamedVariant"
+                                )
+                            }
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+                            $steps["runCode"] =
+                              $state.textInput10.value == "upgrade"
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: __wrapUserFunction(
+                                        {
+                                          type: "InteractionArgLoc",
+                                          actionName: "customFunction",
+                                          interactionUuid: "LJncrqIQ9e",
+                                          componentUuid: "sl5p3sYKkHMv",
+                                          argName: "customFunction"
+                                        },
+                                        () => () => {
+                                          return (state.currentTab = 9);
+                                        }
+                                      )
+                                    };
+                                    return __wrapUserFunction(
+                                      {
+                                        type: "InteractionLoc",
+                                        actionName: "customFunction",
+                                        interactionUuid: "LJncrqIQ9e",
+                                        componentUuid: "sl5p3sYKkHMv"
+                                      },
+                                      () =>
+                                        (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]),
+                                      actionArgs
+                                    );
+                                  })()
+                                : undefined;
+                            if (
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await __wrapUserPromise(
+                                {
+                                  type: "InteractionLoc",
+                                  actionName: "customFunction",
+                                  interactionUuid: "LJncrqIQ9e",
+                                  componentUuid: "sl5p3sYKkHMv"
+                                },
+                                $steps["runCode"]
+                              );
+                            }
+                          }}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___1LkDt
+                            )}
+                          >
+                            {"Submit"}
+                          </div>
+                        </Button2>
+                      ) : null}
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+              {(
+                hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  ? (() => {
+                      try {
+                        return $state.currentTab == 9;
+                      } catch (e) {
+                        if (e instanceof TypeError) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : true
+              ) ? (
+                <div
                   className={classNames(projectcss.all, sty.freeBox__l3ZGb, {
                     [sty.freeBoxunnamedVariant__l3ZGBzhk3W]: hasVariant(
                       $state,
@@ -3140,6 +3455,7 @@ const PlasmicDescendants = {
     "textInput6",
     "textInput7",
     "textInput8",
+    "textInput10",
     "textInput9"
   ],
   h1: ["h1"],
@@ -3153,6 +3469,7 @@ const PlasmicDescendants = {
   textInput6: ["textInput6"],
   textInput7: ["textInput7"],
   textInput8: ["textInput8"],
+  textInput10: ["textInput10"],
   textInput9: ["textInput9"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -3171,6 +3488,7 @@ type NodeDefaultElementType = {
   textInput6: typeof TextInput;
   textInput7: typeof TextInput;
   textInput8: typeof TextInput;
+  textInput10: typeof TextInput;
   textInput9: typeof TextInput;
 };
 
@@ -3245,6 +3563,7 @@ export const PlasmicHomepage = Object.assign(
     textInput6: makeNodeComponent("textInput6"),
     textInput7: makeNodeComponent("textInput7"),
     textInput8: makeNodeComponent("textInput8"),
+    textInput10: makeNodeComponent("textInput10"),
     textInput9: makeNodeComponent("textInput9"),
 
     // Metadata about props expected for PlasmicHomepage
