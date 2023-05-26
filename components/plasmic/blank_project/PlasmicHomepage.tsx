@@ -578,7 +578,7 @@ function PlasmicHomepage__RenderFunc(props: {
             src={
               hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? ("https://8a58-170-64-158-32.ngrok-free.app" as const)
-                : ("https://www.example.com" as const)
+                : ("https://8a58-170-64-158-32.ngrok-free.app" as const)
             }
           />
 
