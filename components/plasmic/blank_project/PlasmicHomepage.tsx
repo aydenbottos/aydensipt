@@ -3010,7 +3010,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                           argName: "customFunction"
                                         },
                                         () => () => {
-                                          return (state.currentTab = 9);
+                                          return ($state.currentTab = 9);
                                         }
                                       )
                                     };
