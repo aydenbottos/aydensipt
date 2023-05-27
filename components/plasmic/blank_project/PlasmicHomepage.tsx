@@ -17,6 +17,8 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 
+import TimeDisplay from "./TimeDisplay";
+
 import * as p from "@plasmicapp/react-web";
 import * as ph from "@plasmicapp/react-web/lib/host";
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
@@ -865,25 +867,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }
               )}
             >
-              {(() => {
-                try {
-                  return new Date(
-                    Number(new Date()) -
-                      Number(
-                        new Date(
-                          new Date().toDateString() + " " + $state.startTime
-                        )
-                      )
-                  )
-                    .toUTCString()
-                    .slice(17, 25);
-                } catch (e) {
-                  if (e instanceof TypeError) {
-                    return "";
-                  }
-                  throw e;
-                }
-              })()}
+              <TimeDisplay startTime={$state.startTime} />
             </div>
           ) : null}
           {(
