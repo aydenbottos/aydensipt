@@ -3402,7 +3402,7 @@ function PlasmicHomepage__RenderFunc(props: {
                             }
 
                             // Hide the text on click
-                            const textElement = document.querySelector("sty.text__f67Rt");
+                            const textElement = document.querySelector(".sty.text__f67Rt");
                             if (textElement) {
                               textElement.style.display = "none";
                             }
