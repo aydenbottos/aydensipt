@@ -1002,7 +1002,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       )}
                     >
                       {
-                        "Congrats! You have just been hired by Palo Alto Security as their newest Security Engineer. Your first assignment today is to try and compromise a Linux system using an unprivileged user.\n\nThe connection details for the machine are below. Let's see if you can connect!\n\nUsername: foo\nPassword: bar\nIP address: 170.64.252.6 on port 2222\n\nOnce you connect, feel free to familiarise yourself with the terminal. Then, find out the user's UID using the id command. The UID is each Linux user's unique ID number that identifies them on the system."
+                        "Congrats! You have just been hired by Palo Alto Networks as their newest Security Engineer. Your first assignment today is to try and compromise a Linux system using an unprivileged user.\n\nThe connection details for the machine are below. Let's see if you can connect!\n\nUsername: foo\nPassword: bar\nIP address: 170.64.252.6 on port 2222\n\nOnce you connect, feel free to familiarise yourself with the terminal. Then, find out the user's UID using the id command. The UID is each Linux user's unique ID number that identifies them on the system."
                       }
                     </div>
                   ) : null}
@@ -2353,7 +2353,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       <React.Fragment>
                         <React.Fragment>
                           {
-                            "Inside this directory are two C files and a Bash script. We won't need the Bash script, so feel free to ignore it. The two C files are exploit-1.c and exploit-2.c. Exploit 1 relies on modifying the /etc/passwd file to change the root user's password, whereas exploit 2 relies on a special type of file called a SUID binary. We will use exploit 2 due to it being easier to use. To use the exploit, we must first compile it using a program called GCC. This program is called a compiler, and will turn our C code into a working program. Let's use the compiler, and then, find out what the output file is called using ls.\n\n"
+                            "Inside this directory are two C files. They are exploit-1.c and exploit-2.c. Exploit 1 relies on modifying the /etc/passwd file to change the root user's password, whereas exploit 2 relies on a special type of file called a SUID binary. We will use exploit 2 due to it being easier to use. To use the exploit, we must first compile it using a program called GCC. This program is called a compiler, and will turn our C code into a working program. Let's use the compiler, and then, find out what the output file is called using ls.\n\n"
                           }
                         </React.Fragment>
                         {
@@ -2636,7 +2636,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       <React.Fragment>
                         <React.Fragment>
                           {
-                            "Congrats on making it this far! We have now reached the final stage of our hack - running the exploit. In the directory, there should be a file named foo. This is our exploit program, and if all goes well, should break us out of the restricted environment, and give us unlimited root privileges. Run the binary, then in the elevated shell, use the id command to find the UID of the root user.\n\n"
+                            "Congrats on making it this far! We have now reached the final stage of our hack - running the exploit. In the directory, there should be a file named foo. This is our exploit program, and if all goes well, should break us out of the restricted environment, and give us root privileges. When running the binary, we will need one parameter, which is the program su. This program is a SUID program, meaning that it runs with root privileges regardless of who runs it. Normally, these programs require a root password, but our exploit gets around it. Run the exploit binary, then in the elevated shell, use the id command to find the UID of the root user.\n\n"
                           }
                         </React.Fragment>
                         {
@@ -3178,7 +3178,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       )}
                     >
                       {
-                        "Fellow security engineer, I am proud to say, that you have successfully completed your first assignment. Today, you have learnt the basics of a Linux system, and managed to exploit a kernel vulnerability to gain root privileges. However, with great power, comes great responsibility. These exploits were not created to be used for malicious purposes, but rather to ensure that bugs in the Linux kernel were fixed before they could be used in the wild. Please do not use these abilities for the wrong reasons - it is not only against the law, but against the principles of open source and security research.\n\nFeel free to explore the system as you wish. Once you are done, exit the page to free up a slot for another user. Make sure to enter your name so your time is recorded!"
+                        "Fellow security engineer, I am proud to say, that you have successfully completed your first assignment. Today, you have learnt the basics of a Linux system, managed to exploit a kernel vulnerability to gain root privileges, and patched the vulnerability to ensure the security of the system. However, with great power, comes great responsibility. These exploits were not created to be used for malicious purposes, but rather to ensure that bugs in the Linux kernel were fixed before they could be used in the wild. Please do not use these abilities for the wrong reasons - it is not only against the law, but against the principles of open source and security research.\n\nFeel free to explore the system as you wish. Once you are done, exit the page to free up a slot for another user. Make sure to enter your name so your time is recorded!"
                       }
                     </div>
                   ) : null}
